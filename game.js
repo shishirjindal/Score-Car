@@ -10,7 +10,7 @@ var roadimage = new Image();
 roadimage.onload = function(){
 	bgimage = true;
 };
-roadimage.src = "images/road.jpg";
+roadimage.src = "images/road2.jpg";
 
 //Hidden Bgimage
 var bgimage2 = false;
@@ -18,7 +18,7 @@ var road2image = new Image();
 road2image.onload = function(){
 	bgimage2 = true;
 };
-road2image.src = "images/road.jpg";
+road2image.src = "images/road2.jpg";
 
 //Car Image
 var carReady = false;
@@ -102,6 +102,8 @@ var reset = function(){
 	road2.y = 0;
 	score = 0;
 	real_score = 0;
+	defend1.speed = 256;
+	defend2.speed = 256;
 };
 
 //render function
@@ -113,13 +115,13 @@ var render = function(){
 		ctx.drawImage(road2image,road2.x,road2.y,canvas.width,canvas.height);
 	}
 	if(carReady){
-		ctx.drawImage(carimage,car.x,car.y,80,50);
+		ctx.drawImage(carimage,car.x,car.y,100,50);
 	}
 	if(defend1Ready){
-		ctx.drawImage(defend1image,defend1.x,defend1.y,80,50);
+		ctx.drawImage(defend1image,defend1.x,defend1.y,100,50);
 	}
 	if(defend2Ready){
-		ctx.drawImage(defend2image,defend2.x,defend2.y,80,50);
+		ctx.drawImage(defend2image,defend2.x,defend2.y,100,50);
 	}
 
 	//display score
@@ -191,10 +193,10 @@ var update = function(mod){
 	}
 	defend1.x -= defend1.speed*mod;
 	defend2.x -= defend2.speed*mod;
-	if(defend1.x <= car.x + 80 && car.x - defend1.x <=80 && car.y == defend1.y){
+	if(defend1.x <= car.x + 100 && car.x - defend1.x <=100 && car.y == defend1.y){
 		reset();
 	}
-	if(defend2.x <= car.x + 80 && car.x - defend2.x <=80 && car.y == defend2.y){
+	if(defend2.x <= car.x + 100 && car.x - defend2.x <=100 && car.y == defend2.y){
 		reset();
 	}
 };
